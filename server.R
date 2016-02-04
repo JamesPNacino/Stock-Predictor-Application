@@ -536,240 +536,672 @@ summa <- function(symbol, MinDays, MaxDays, predictors){
         }
         if (MinDays=="30"){
                 data <- PredictStock(symbol)[1:30,]
-                dat <- as.numeric(data[,7])
                 if (length(predictors)==0){
-                        summary(lm(data[,4] ~ dat))
+                        print("Please List the Predictor Variable(s)")
                 }
                 else if (length(predictors)==1){
-                        var1 <- as.numeric(predictors[1])
-                        summary(lm(data[,4] ~ dat + data[,var1]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1]) 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date)
+                                summary(fit)
+                        }    
                 }
                 else if (length(predictors)==2){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1)
+                                summary(fit)
+                        }
+                        
                 }
                 else if (length(predictors)==3){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==4){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==5){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==6){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])                               
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==7){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])
-                        var7 <- as.numeric(predictors[7])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6] + data[,var7]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==8){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])
-                        var7 <- as.numeric(predictors[7])
-                        var8 <- as.numeric(predictors[8])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6] + data[,var7] + data[,var8]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var7 <- as.numeric(predictors[8])
+                        var7 <- data[,var7]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==9){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])
-                        var7 <- as.numeric(predictors[7])
-                        var8 <- as.numeric(predictors[8])
-                        var9 <- as.numeric(predictors[9])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6] + data[,var7] + data[,var8] + data[,var9]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var8 <- as.numeric(predictors[9])
+                        var8 <- data[,var8]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                summary(fit)
+                        }
+                }
+                else if (length(predictors)==10){
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var8 <- as.numeric(predictors[9])
+                        var8 <- data[,var8]
+                        var9 <- as.numeric(predictors[10])
+                        var9 <- data[,var9]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                summary(fit)
+                        }
                 }
 
         }
         else if (MinDays=="120"){
                 data <- PredictStock(symbol)[1:120,]
-                dat <- as.numeric(data[,7])
                 if (length(predictors)==0){
-                        summary(lm(data[,4] ~ dat))
+                        print("Please List the Predictor Variable(s)")
                 }
                 else if (length(predictors)==1){
-                        var1 <- as.numeric(predictors[1])
-                        summary(lm(data[,4] ~ dat + data[,var1]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1]) 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date)
+                                summary(fit)
+                        }    
                 }
                 else if (length(predictors)==2){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1)
+                                summary(fit)
+                        }
+                        
                 }
                 else if (length(predictors)==3){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==4){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==5){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==6){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])                               
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==7){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])
-                        var7 <- as.numeric(predictors[7])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6] + data[,var7]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==8){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])
-                        var7 <- as.numeric(predictors[7])
-                        var8 <- as.numeric(predictors[8])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6] + data[,var7] + data[,var8]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var7 <- as.numeric(predictors[8])
+                        var7 <- data[,var7]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==9){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])
-                        var7 <- as.numeric(predictors[7])
-                        var8 <- as.numeric(predictors[8])
-                        var9 <- as.numeric(predictors[9])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6] + data[,var7] + data[,var8] + data[,var9]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var8 <- as.numeric(predictors[9])
+                        var8 <- data[,var8]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                summary(fit)
+                        }
+                }
+                else if (length(predictors)==10){
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var8 <- as.numeric(predictors[9])
+                        var8 <- data[,var8]
+                        var9 <- as.numeric(predictors[10])
+                        var9 <- data[,var9]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                summary(fit)
+                        }
                 }
         }
         else if (MinDays=="Max"){
                 data <- PredictStock(symbol)
-                dat <- as.numeric(data[,7])
                 if (length(predictors)==0){
-                        summary(lm(data[,4] ~ dat))
+                        print("Please List the Predictor Variable(s)")
                 }
                 else if (length(predictors)==1){
-                        var1 <- as.numeric(predictors[1])
-                        summary(lm(data[,4] ~ dat + data[,var1]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1]) 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date)
+                                summary(fit)
+                        }    
                 }
                 else if (length(predictors)==2){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1)
+                                summary(fit)
+                        }
+                        
                 }
                 else if (length(predictors)==3){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==4){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==5){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==6){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])                               
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==7){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])
-                        var7 <- as.numeric(predictors[7])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6] + data[,var7]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==8){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])
-                        var7 <- as.numeric(predictors[7])
-                        var8 <- as.numeric(predictors[8])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6] + data[,var7] + data[,var8]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var7 <- as.numeric(predictors[8])
+                        var7 <- data[,var7]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                summary(fit)
+                        }
                 }
                 else if (length(predictors)==9){
-                        var1 <- as.numeric(predictors[1])
-                        var2 <- as.numeric(predictors[2])
-                        var3 <- as.numeric(predictors[3])
-                        var4 <- as.numeric(predictors[4])
-                        var5 <- as.numeric(predictors[5])
-                        var6 <- as.numeric(predictors[6])
-                        var7 <- as.numeric(predictors[7])
-                        var8 <- as.numeric(predictors[8])
-                        var9 <- as.numeric(predictors[9])
-                        summary(lm(data[,4] ~ dat + data[,var1] + data[,var2] + data[,var3] + data[,var4] + data[,var5] + data[,var6] + data[,var7] + data[,var8] + data[,var9]))
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var8 <- as.numeric(predictors[9])
+                        var8 <- data[,var8]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                summary(fit)
+                        }
+                }
+                else if (length(predictors)==10){
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var8 <- as.numeric(predictors[9])
+                        var8 <- data[,var8]
+                        var9 <- as.numeric(predictors[10])
+                        var9 <- data[,var9]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                summary(fit)
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                summary(fit)
+                        }
                 }
         }
 }
@@ -780,7 +1212,7 @@ summa <- function(symbol, MinDays, MaxDays, predictors){
 
 
 ##Create the prediction interval
-prediction <- function(symbol, MinDays, MaxDays, predictors){
+prediction <- function(symbol, MinDays, MaxDays, predictors, fp){
         ##Create function to get stock prices/info using a function and bind industry/sector info 
         stockprices <- function(symbol){
                 TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL))
@@ -892,464 +1324,735 @@ prediction <- function(symbol, MinDays, MaxDays, predictors){
         if (MinDays=="30"){
                 data <- PredictStock(symbol)[1:30,]
                 if (length(predictors)==0){
-                        var <- as.numeric(data[,7])
-                        fit <- lm(data[,4] ~ var)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays)), interval="prediction")
-                        pred_df      
+                        print("Please List the Predictor Variable(s)")
                 }
                 else if (length(predictors)==1){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        fit <- lm(data[,4] ~ var + var1)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1]), interval="prediction")
-                        pred_df      
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1]) 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays)), interval="prediction")      
+                                pred_df
+                        }    
                 }
                 else if (length(predictors)==2){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        fit <- lm(data[,4] ~ var + var1 + var2)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1]), interval="prediction")
-                        pred_df
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp), interval="prediction")      
+                                pred_df
+                        }
+                        
                 }
                 else if (length(predictors)==3){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
-                        var3 <- data[,var3]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1]), interval="prediction")
-                        pred_df
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==4){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
-                        var4 <- data[,var4]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==5){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
-                        var5 <- data[,var5]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==6){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
-                        var6 <- data[,var6]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==7){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
+                        var6 <- as.numeric(predictors[7])
                         var6 <- data[,var6]
-                        var7 <- as.numeric(predictors[7])
-                        var7 <- data[,var7]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1], var7=var7[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==8){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
+                        var6 <- as.numeric(predictors[7])
                         var6 <- data[,var6]
-                        var7 <- as.numeric(predictors[7])
+                        var7 <- as.numeric(predictors[8])
                         var7 <- data[,var7]
-                        var8 <- as.numeric(predictors[8])
-                        var8 <- data[,var8]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1], var7=var7[1], var8=var8[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==9){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
+                        var6 <- as.numeric(predictors[7])
                         var6 <- data[,var6]
-                        var7 <- as.numeric(predictors[7])
-                        var7 <- data[,var7]
-                        var8 <- as.numeric(predictors[8])
+                        var8 <- as.numeric(predictors[9])
                         var8 <- data[,var8]
-                        var9 <- as.numeric(predictors[9])
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp, var8=var8[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp, var8=var8[1]*fp), interval="prediction")      
+                                pred_df
+                        }
+                }
+                else if (length(predictors)==10){
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var8 <- as.numeric(predictors[9])
+                        var8 <- data[,var8]
+                        var9 <- as.numeric(predictors[10])
                         var9 <- data[,var9]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1], var7=var7[1], var8=var8[1], var9=var9[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1], var8=var8[1]*fp, var9=var9[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp, var8=var8[1]*fp, var9=var9[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
         }
         else if (MinDays=="120"){
                 data <- PredictStock(symbol)[1:120,]
                 if (length(predictors)==0){
-                        var <- as.numeric(data[,7])
-                        fit <- lm(data[,4] ~ var)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays)), interval="prediction")
-                        pred_df      
+                        print("Please List the Predictor Variable(s)")
                 }
                 else if (length(predictors)==1){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        fit <- lm(data[,4] ~ var + var1)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1]), interval="prediction")
-                        pred_df      
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1]) 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays)), interval="prediction")      
+                                pred_df
+                        }    
                 }
                 else if (length(predictors)==2){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        fit <- lm(data[,4] ~ var + var1 + var2)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1]), interval="prediction")
-                        pred_df
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp), interval="prediction")      
+                                pred_df
+                        }
+                        
                 }
                 else if (length(predictors)==3){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
-                        var3 <- data[,var3]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1]), interval="prediction")
-                        pred_df
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==4){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
-                        var4 <- data[,var4]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==5){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
-                        var5 <- data[,var5]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==6){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
-                        var6 <- data[,var6]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==7){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
+                        var6 <- as.numeric(predictors[7])
                         var6 <- data[,var6]
-                        var7 <- as.numeric(predictors[7])
-                        var7 <- data[,var7]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1], var7=var7[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==8){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
+                        var6 <- as.numeric(predictors[7])
                         var6 <- data[,var6]
-                        var7 <- as.numeric(predictors[7])
+                        var7 <- as.numeric(predictors[8])
                         var7 <- data[,var7]
-                        var8 <- as.numeric(predictors[8])
-                        var8 <- data[,var8]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1], var7=var7[1], var8=var8[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==9){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
+                        var6 <- as.numeric(predictors[7])
                         var6 <- data[,var6]
-                        var7 <- as.numeric(predictors[7])
-                        var7 <- data[,var7]
-                        var8 <- as.numeric(predictors[8])
+                        var8 <- as.numeric(predictors[9])
                         var8 <- data[,var8]
-                        var9 <- as.numeric(predictors[9])
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp, var8=var8[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp, var8=var8[1]*fp), interval="prediction")      
+                                pred_df
+                        }
+                }
+                else if (length(predictors)==10){
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var8 <- as.numeric(predictors[9])
+                        var8 <- data[,var8]
+                        var9 <- as.numeric(predictors[10])
                         var9 <- data[,var9]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1], var7=var7[1], var8=var8[1], var9=var9[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1], var8=var8[1]*fp, var9=var9[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp, var8=var8[1]*fp, var9=var9[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
         }
         else if (MinDays=="Max"){
                 data <- PredictStock(symbol)
+                
                 if (length(predictors)==0){
-                        var <- as.numeric(data[,7])
-                        fit <- lm(data[,4] ~ var)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays)), interval="prediction")
-                        pred_df      
+                        print("Please List the Predictor Variable(s)")
                 }
                 else if (length(predictors)==1){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        fit <- lm(data[,4] ~ var + var1)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1]), interval="prediction")
-                        pred_df      
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1]) 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays)), interval="prediction")      
+                                pred_df
+                        }    
                 }
                 else if (length(predictors)==2){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        fit <- lm(data[,4] ~ var + var1 + var2)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1]), interval="prediction")
-                        pred_df
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp), interval="prediction")      
+                                pred_df
+                        }
+
                 }
                 else if (length(predictors)==3){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
-                        var3 <- data[,var3]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1]), interval="prediction")
-                        pred_df
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==4){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
-                        var4 <- data[,var4]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==5){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
-                        var5 <- data[,var5]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==6){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
-                        var6 <- data[,var6]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==7){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
+                        var6 <- as.numeric(predictors[7])
                         var6 <- data[,var6]
-                        var7 <- as.numeric(predictors[7])
-                        var7 <- data[,var7]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1], var7=var7[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==8){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
+                        var6 <- as.numeric(predictors[7])
                         var6 <- data[,var6]
-                        var7 <- as.numeric(predictors[7])
+                        var7 <- as.numeric(predictors[8])
                         var7 <- data[,var7]
-                        var8 <- as.numeric(predictors[8])
-                        var8 <- data[,var8]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1], var7=var7[1], var8=var8[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
                 else if (length(predictors)==9){
-                        var <- as.numeric(data[,7])
-                        var1 <- as.numeric(predictors[1])
-                        var1 <- data[,var1]
-                        var2 <- as.numeric(predictors[2])
-                        var2 <- data[,var2]
-                        var3 <- as.numeric(predictors[3])
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
                         var3 <- data[,var3]
-                        var4 <- as.numeric(predictors[4])
+                        var4 <- as.numeric(predictors[5])
                         var4 <- data[,var4]
-                        var5 <- as.numeric(predictors[5])
+                        var5 <- as.numeric(predictors[6])
                         var5 <- data[,var5]
-                        var6 <- as.numeric(predictors[6])
+                        var6 <- as.numeric(predictors[7])
                         var6 <- data[,var6]
-                        var7 <- as.numeric(predictors[7])
-                        var7 <- data[,var7]
-                        var8 <- as.numeric(predictors[8])
+                        var8 <- as.numeric(predictors[9])
                         var8 <- data[,var8]
-                        var9 <- as.numeric(predictors[9])
-                        var9 <- data[,var9]
-                        fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
-                        pred_df <- predict(fit,data.frame(var=(var[1]+MaxDays), var1=var1[1], var2=var2[1], var3=var3[1], var4=var4[1], var5=var5[1], var6=var6[1], var7=var7[1], var8=var8[1], var9=var9[1]), interval="prediction")
-                        pred_df
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp, var8=var8[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp, var8=var8[1]*fp), interval="prediction")      
+                                pred_df
+                        }
                 }
-               
-        }
+                else if (length(predictors)==10){
+                        date <- as.numeric(data[,7])
+                        var <- as.numeric(predictors[1])
+                        var1 <- as.numeric(predictors[2])
+                        var1 <- data[,var1] 
+                        var2 <- as.numeric(predictors[3])
+                        var2 <- data[,var2] 
+                        var3 <- as.numeric(predictors[4])
+                        var3 <- data[,var3]
+                        var4 <- as.numeric(predictors[5])
+                        var4 <- data[,var4]
+                        var5 <- as.numeric(predictors[6])
+                        var5 <- data[,var5]
+                        var6 <- as.numeric(predictors[7])
+                        var6 <- data[,var6]
+                        var8 <- as.numeric(predictors[9])
+                        var8 <- data[,var8]
+                        var9 <- as.numeric(predictors[10])
+                        var9 <- data[,var9]
+                        if (var>7){
+                                var <- data[,var]
+                                fit <- lm(data[,4] ~ var + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var=var[1]*fp, var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1], var8=var8[1]*fp, var9=var9[1]*fp), interval="prediction")
+                                pred_df
+                        }
+                        else {
+                                fit <- lm(data[,4] ~ date + var1 + var2 + var3 + var4 + var5 + var6 + var7 + var8 + var9)
+                                pred_df <- predict(fit,data.frame(date=(date[1]+MaxDays), var1=var1[1]*fp, var2=var2[1]*fp, var3=var3[1]*fp, var4=var4[1]*fp, var5=var5[1]*fp, var6=var6[1]*fp, var7=var7[1]*fp, var8=var8[1]*fp, var9=var9[1]*fp), interval="prediction")      
+                                pred_df
+                        }
+                }
+                }
 }
+
 
 
 
@@ -1692,7 +2395,7 @@ shinyServer(
 
                 output$regression_plot <- renderPlot({regress_plot(input$Stock, input$DayBack)})
                 
-                output$prediction <- renderPrint({prediction(input$Stock, input$DayBack, input$DayForward, input$Predictors)})
+                output$prediction <- renderPrint({prediction(input$Stock, input$DayBack, input$DayForward, input$Predictors, input$FinancialPredictorMultiplier)})
                 
                 output$summary <- renderPrint({summa(input$Stock, input$DayBack, input$DayForward, input$Predictors)})
                 

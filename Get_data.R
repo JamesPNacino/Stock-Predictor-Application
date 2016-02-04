@@ -1,7 +1,7 @@
 ##Install and load required packages
 ##install.packages("quantmod")
-##library(quantmod)
-##library(reshape2)
+library(quantmod)
+library(reshape2)
 
 
 
@@ -134,6 +134,6 @@ var1 <- PredictStock("AAPL")$AssetTurnoverRatio
 var2 <- PredictStock("AAPL")$ReturnOnEquity
 var3 <- PredictStock("AAPL")$Date
 regress <- lm(PredictStock("AAPL")[,4] ~ var3)
-predict(regress, data.frame(var3=as.Date("2016-2-15"), var2=var2[1]), interval="prediction")
+predict(regress, data.frame(var3=as.Date("2016-2-15"), PredictStock("AAPL")$ReturnOnEquity[300]), interval="prediction")
 
 

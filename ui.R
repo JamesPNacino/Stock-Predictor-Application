@@ -6,17 +6,19 @@ library(shiny)
 ##NOTE!!! The app takes a couple seconds to load
 shinyUI(pageWithSidebar(
         
-        headerPanel("Stock Price Predictor and Analysis"),
+        headerPanel("Regression Stock Price Predictor and Analysis"),
         sidebarPanel(
                 textInput("Stock", "Analyze any Stock on the NYSE or NASDAQ stock exchanges:", value="MSFT"),
                 selectInput('DayBack', "How many days back would you like your data to go back to help make the prediction?",
                             choices=c("30 Days"="30", "120 Days"="120", "Maximum Number of Days Available"="Max"), selected="Max"),
                 sliderInput('DayForward', "How many days in advance would you like for your stock's price prediction?",
                             30, min=1, max=210, step=1, sep=""),
-                checkboxGroupInput("Predictors", "Choose any of the following predictors to include in your customized stock prediction. The independent variable 'Date' is automatically included in the regression analysis. (There may be an error to predict prices if you do not use all historic data or if the ratios were not found in the dataset):", 
-                             choices=c("Return On Assets"="12", "Return On Equity"="13", "Profit Margin"="14", 
-                                       "Current Ratio"="15", "Quick Ratio"="16", "Debt to Equity Ratio"="17", "Interest Coverage Ratio"="18", 
-                                       "Asset Turnover Ratio"="19", "Inventory Turnover Ratio"="20")),
+                sliderInput('FinancialPredictorMultiplier', "Set the multiplier on the financial predictors, listed as '(FP)'. NOTE: Leave the slider on the value of '1' to predict based on the value of the current financial predictor:",
+                            1, min=.1, max=2, step=.01, sep=""),
+                checkboxGroupInput("Predictors", "Choose any of the following predictors to include in your customized stock prediction. It is recommended to leave the variable, 'Date' checked. (There may be an error to predict prices if you do not use all historic data or if the ratios were not found in the dataset):", 
+                             choices=c("Date"="7", "Return On Assets (FP)"="12", "Return On Equity (FP)"="13", "Profit Margin (FP)"="14", 
+                                       "Current Ratio (FP)"="15", "Quick Ratio (FP)"="16", "Debt to Equity Ratio (FP)"="17", "Interest Coverage Ratio (FP)"="18", 
+                                       "Asset Turnover Ratio (FP)"="19", "Inventory Turnover Ratio (FP)"="20"), selected="7"),
                 selectInput('FinancialStatement', "Choose which financial statement to view",
                             choices=c("Balance Sheet"="BS", "Income Statement"="IS", "Cash Flow"="CF"), selected="BS"),
                 submitButton(text="Analyze")
