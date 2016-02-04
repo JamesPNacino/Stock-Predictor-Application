@@ -37,6 +37,8 @@ When running the linear model analysis through R software, it reports many value
 
 I tested a regression model through 30 days and 120 days of historic stock prices, and a regression model through historic stock prices which includes data all the way from when the company issued their quarterly balance sheet five quarters ago to the last market close.
 
+Under the 'Regression Analysis' tab is where the prediction will occur. Using a 95% prediction interval we will get our predicted price (under the variable 'fit'), the lower price (under the variable 'lwr') and upper price (under the variable 'upr'). A 95% prediction interval is defined by saying that there is a 95% chance that our predicted stock price will be within the lower and upper price.
+
 
 ##Results and Conclusion
 
