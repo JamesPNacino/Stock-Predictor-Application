@@ -10,7 +10,7 @@ library(shiny)
 data <- function(symbol="", MinDays){
         ##Create function to get stock prices/info using a function and bind industry/sector info 
         stockprices <- function(symbol){
-                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL))
+                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL, src = "google"))
                 TICKERS.DF <- cbind(TICKERS.DF, "Date"=attr(TICKERS.DF , "row.names"))
                 TICKERS.DF <- cbind(TICKERS.DF, "PctChange"=round(((TICKERS.DF[,4]-TICKERS.DF[,1])/TICKERS.DF[,1]*100), digits=4))
                 IndustryInfo <- Stocks_df[Stocks_df$Symbol==symbol,]
@@ -136,7 +136,7 @@ regress_plot <- function(symbol, MinDays){
         data <- function(symbol="", MinDays){
                 ##Create function to get stock prices/info using a function and bind industry/sector info 
                 stockprices <- function(symbol){
-                        TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL))
+                        TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL, src = "google"))
                         TICKERS.DF <- cbind(TICKERS.DF, "Date"=attr(TICKERS.DF , "row.names"))
                         TICKERS.DF <- cbind(TICKERS.DF, "PctChange"=round(((TICKERS.DF[,4]-TICKERS.DF[,1])/TICKERS.DF[,1]*100), digits=4))
                         IndustryInfo <- Stocks_df[Stocks_df$Symbol==symbol,]
@@ -273,7 +273,7 @@ regress_plot <- function(symbol, MinDays){
 regress_plot2 <- function(symbol="", MinDays){
         ##Create function to get stock prices/info using a function and bind industry/sector info 
         stockprices <- function(symbol){
-                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL))
+                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL, src = "google"))
                 TICKERS.DF <- cbind(TICKERS.DF, "Date"=attr(TICKERS.DF , "row.names"))
                 TICKERS.DF <- cbind(TICKERS.DF, "PctChange"=round(((TICKERS.DF[,4]-TICKERS.DF[,1])/TICKERS.DF[,1]*100), digits=4))
                 IndustryInfo <- Stocks_df[Stocks_df$Symbol==symbol,]
@@ -386,10 +386,9 @@ regress_plot2 <- function(symbol="", MinDays){
                 check$variable <- as.character(check$variable)
                 check$value <- as.numeric(check$value)
                 check <- data.frame(cbind(check, "symbol"=symbol))
-                qplot(data=check,x=check[check$variable==paste(check[1,4],"Close", sep="."),][,1],y=check[check$variable==paste(check[1,4],"Close", sep="."),][,3], color=check[check$variable==paste(check[1,4],"Close", sep="."),][,3],
+                qplot(data=check[check$variable==paste(check[1,4],"Close", sep="."),],x=check[check$variable==paste(check[1,4],"Close", sep="."),][,1],y=check[check$variable==paste(check[1,4],"Close", sep="."),][,3], color=check[check$variable==paste(check[1,4],"Close", sep="."),][,3],
                       main="Stock Price Regression Analysis", xlab="Date", 
-                      ylab="Stock Price", geom=c("point","smooth"),
-                      method="lm") + labs(colour = "Stock Price")
+                      ylab="Stock Price", geom=c("point","smooth"), method = "lm") + labs(colour = "Stock Price")
         }
         else if (MinDays=="120"){
                 check <- PredictStock(symbol)[1:120,]
@@ -398,7 +397,7 @@ regress_plot2 <- function(symbol="", MinDays){
                 check$variable <- as.character(check$variable)
                 check$value <- as.numeric(check$value)
                 check <- data.frame(cbind(check, "symbol"=symbol))
-                qplot(data=check,x=check[check$variable==paste(check[1,4],"Close", sep="."),][,1],y=check[check$variable==paste(check[1,4],"Close", sep="."),][,3], color=check[check$variable==paste(check[1,4],"Close", sep="."),][,3],
+                qplot(data=check[check$variable==paste(check[1,4],"Close", sep="."),],x=check[check$variable==paste(check[1,4],"Close", sep="."),][,1],y=check[check$variable==paste(check[1,4],"Close", sep="."),][,3], color=check[check$variable==paste(check[1,4],"Close", sep="."),][,3],
                       main="Stock Price Regression Analysis", xlab="Date", 
                       ylab="Stock Price", geom=c("point","smooth"),
                       method="lm") + labs(colour = "Stock Price")
@@ -410,7 +409,7 @@ regress_plot2 <- function(symbol="", MinDays){
                 check$variable <- as.character(check$variable)
                 check$value <- as.numeric(check$value)
                 check <- data.frame(cbind(check, "symbol"=symbol))
-                qplot(data=check,x=check[check$variable==paste(check[1,4],"Close", sep="."),][,1],y=check[check$variable==paste(check[1,4],"Close", sep="."),][,3], color=check[check$variable==paste(check[1,4],"Close", sep="."),][,3],
+                qplot(data=check[check$variable==paste(check[1,4],"Close", sep="."),],x=check[check$variable==paste(check[1,4],"Close", sep="."),][,1],y=check[check$variable==paste(check[1,4],"Close", sep="."),][,3], color=check[check$variable==paste(check[1,4],"Close", sep="."),][,3],
                       main="Stock Price Regression Analysis", xlab="Date", 
                       ylab="Stock Price", geom=c("point","smooth"),
                       method="lm") + labs(colour = "Stock Price")
@@ -428,7 +427,7 @@ regress_plot2 <- function(symbol="", MinDays){
 summa <- function(symbol, MinDays, MaxDays, predictors){
         ##Create function to get stock prices/info using a function and bind industry/sector info 
         stockprices <- function(symbol){
-                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL))
+                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL, src = "google"))
                 TICKERS.DF <- cbind(TICKERS.DF, "Date"=attr(TICKERS.DF , "row.names"))
                 TICKERS.DF <- cbind(TICKERS.DF, "PctChange"=round(((TICKERS.DF[,4]-TICKERS.DF[,1])/TICKERS.DF[,1]*100), digits=4))
                 IndustryInfo <- Stocks_df[Stocks_df$Symbol==symbol,]
@@ -1215,7 +1214,7 @@ summa <- function(symbol, MinDays, MaxDays, predictors){
 prediction <- function(symbol, MinDays, MaxDays, predictors, fp){
         ##Create function to get stock prices/info using a function and bind industry/sector info 
         stockprices <- function(symbol){
-                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL))
+                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL, src = "google"))
                 TICKERS.DF <- cbind(TICKERS.DF, "Date"=attr(TICKERS.DF , "row.names"))
                 TICKERS.DF <- cbind(TICKERS.DF, "PctChange"=round(((TICKERS.DF[,4]-TICKERS.DF[,1])/TICKERS.DF[,1]*100), digits=4))
                 IndustryInfo <- Stocks_df[Stocks_df$Symbol==symbol,]
@@ -2092,7 +2091,7 @@ stockratios <- function(symbol="", statement){
 ratios <- function(symbol="", MinDays){
         ##Create function to get stock prices/info using a function and bind industry/sector info 
         stockprices <- function(symbol){
-                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL))
+                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL, src = "google"))
                 TICKERS.DF <- cbind(TICKERS.DF, "Date"=attr(TICKERS.DF , "row.names"))
                 TICKERS.DF <- cbind(TICKERS.DF, "PctChange"=round(((TICKERS.DF[,4]-TICKERS.DF[,1])/TICKERS.DF[,1]*100), digits=4))
                 IndustryInfo <- Stocks_df[Stocks_df$Symbol==symbol,]
@@ -2241,7 +2240,7 @@ ratios <- function(symbol="", MinDays){
 ratioFacet <- function(symbol="", MinDays){
         ##Create function to get stock prices/info using a function and bind industry/sector info 
         stockprices <- function(symbol){
-                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL))
+                TICKERS.DF <- data.frame(getSymbols(symbol, from=Sys.Date()-657, to=Sys.Date(), env=NULL, src = "google"))
                 TICKERS.DF <- cbind(TICKERS.DF, "Date"=attr(TICKERS.DF , "row.names"))
                 TICKERS.DF <- cbind(TICKERS.DF, "PctChange"=round(((TICKERS.DF[,4]-TICKERS.DF[,1])/TICKERS.DF[,1]*100), digits=4))
                 IndustryInfo <- Stocks_df[Stocks_df$Symbol==symbol,]
