@@ -13,7 +13,7 @@ Using R software I was able to clean and merge multiple datasets. I extracted da
 2. **http://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=nasdaq&render=download** (csv file)
 3. **http://www.nasdaq.com/screening/companies-by-name.aspx?letter=0&exchange=nyse&render=download** (csv file)
 
-Using the Shiny package I constructed the web application in which a person would have various predictors (financial ratios) to choose from when wanting to make a price prediction for their selected stock. Stock price is the response (dependent) variable in this appliction. The time variable **Date** is always selected as an explanatory (independent) variable during each analysis. The following explanatory variables are up to the user to select:
+Using the Shiny package I constructed the web application in which a person would have various predictors (financial ratios) to choose from when wanting to make a price prediction for their selected stock. Stock price is the response (dependent) variable in this appliction. The time variable **Date** should always be checked as a variable during each analysis if you want to be able to make a prediction at some future date in time. The following explanatory variables are up to the user to select:
 
 **Predictors** 
 
@@ -26,6 +26,7 @@ Using the Shiny package I constructed the web application in which a person woul
 7. Tnterest Coverage Ratio
 8. Asset Turnover Ratio
 9. Inventory Turnover Ratio
+10. Date (should always be checked)
 
 For more info about the ratios, go to this site: [**Click Here!!**](http://www.investinganswers.com/education/ratio-analysis/15-financial-ratios-every-investor-should-use-3011)
 
@@ -35,9 +36,9 @@ Using the web application that I made, [**Link**](https://jnacino.shinyapps.io/S
 
 When running the linear model analysis through R software, it reports many values. The three values that are very signifcant in the report is the p-value, the R-Squared value (shown as multiple R-squared in the web app), and adjusted R-Squared.  The p-value tells the significance of the model. A p-value less than .05 means that the linear model is indeed significant. For example, if I had a p-value of .04, this means that there is a 96% probability (100% - 4%) that the slope of the linear model is not zero. Note, that if the slope is zero, then an increase in our predictor variable does not affect on the response variable. The R-squared value is used to determine the accuracy that our linear model will predict. the closer the R-squared value is to 1, the more accurate the predictions will be as an R-squared value of 1 means a perfect linear fit of the data set. The adjusted R-Squared is useful in multi-variable regression analyis (adding multiple predictors) because if the adjusted R-Squared has increased with an addition of an extra variable, then it would mean that the prediction should be more accurate. 
 
-I tested a regression model through 30 days and 120 days of historic stock prices, and a regression model through historic stock prices which includes data all the way from when the company issued their quarterly balance sheet five quarters ago to the last market close.
+I tested a regression model through 30 days and 120 days of historic stock prices, and a regression model through historic stock prices which includes data all the way from when the company issued their quarterly balance sheet five quarters ago to the last market close. 
 
-Under the 'Regression Analysis' tab is where the prediction will occur. Using a 95% prediction interval we will get our predicted price (under the variable 'fit'), the lower price (under the variable 'lwr') and upper price (under the variable 'upr'). A 95% prediction interval is defined by saying that there is a 95% chance that our predicted stock price will be within the lower and upper price.
+Under the 'Regression Analysis' tab is where the prediction will occur. Using a 95% prediction interval we will get our predicted price (under the variable 'fit'), the lower price (under the variable 'lwr') and upper price (under the variable 'upr'). A 95% prediction interval is defined by saying for our previous data points, 95% of the data is located between an upper and lower interval. Think of these intervals as parrallel train tracks with the line of best fit somewhere in the middle. So when a prediction interval is made for a predicted price it means, that according to past data, this is the upper and lower price interval for the predicted price.
 
 
 ##Results and Conclusion
