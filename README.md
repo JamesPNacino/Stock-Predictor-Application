@@ -1,11 +1,20 @@
 # Stock-Predictor-Application
 
-##Introduction
+## Introduction
 This app uses lets you pick which public company to perform a regression analysis on, and lets you choose which predictors (financial ratios) you would like to include in the stock price prediction. This app also compares different ratios and view various financial data of your selected company. **Click this link to go to the web application stock predictor:** [**Click Here!!**](https://jnacino.shinyapps.io/Stock-Predictor-Application/)
 
+## R Packages
+
+To run and implement this project yourself you must install the following packages:
+
+* shiny
+* ggplot2
+* quantmod
+* googleVis
+* reshape2
 
 
-##Method
+## Method
 
 Using R software I was able to clean and merge multiple datasets. I extracted data from the following sources: 
 
@@ -30,7 +39,7 @@ Using the Shiny package I constructed the web application in which a person woul
 
 For more info about the ratios, go to this site: [**Click Here!!**](http://www.investinganswers.com/education/ratio-analysis/15-financial-ratios-every-investor-should-use-3011)
 
-##Testing
+## Testing
 
 Using the web application that I made, [**Link**](https://jnacino.shinyapps.io/Stock-Predictor-Application/), I was able to test the various financial ratios and their correlation to stock price. 
 
@@ -41,6 +50,6 @@ I tested a regression model through 30 days and 120 days of historic stock price
 Under the 'Regression Analysis' tab is where the prediction will occur. Using a 95% prediction interval we will get our predicted price (under the variable 'fit'), the lower price (under the variable 'lwr') and upper price (under the variable 'upr'). A 95% prediction interval is defined by saying for our previous data points, 95% of the data is located between an upper and lower interval. Think of these intervals as parrallel train tracks with the line of best fit somewhere in the middle. So when a prediction interval is made for a predicted price it means, that according to past data, this is the upper and lower price interval for the predicted price.
 
 
-##Results and Conclusion
+## Results and Conclusion
 
 It is not easy to predict the price of a stock. Many variables besides financial ratios affect the price of a stock such as the CEO stepping down or an unpredictable DISASTER. I would have to test more companys' stock on this predictor and track the results to conclude whether or not this predictor can predict with accuracy. 
