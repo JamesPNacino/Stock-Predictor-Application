@@ -13,6 +13,9 @@ To run and implement this project yourself you must install the following packag
 * googleVis
 * reshape2
 
+## Run
+
+In the R environment (to run and implement this web application yourself), you must have 'server.R' and 'ui.R' files open. Then you will have an option to run the web application.
 
 ## Method
 
